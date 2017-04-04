@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="mash.css">
+    <title>Fuck Off!</title>
+  </head>
+
+  <body>
+    <div>
+      <h1>Sometimes it's necessary to tell someone to fuck off.</h1>
+      <h2>And sometimes, that person might not speak English.</h2>
+      <p>That shouldn't stop you though, which is why you have come here.
+        Regardless of the language they may speak, you can express how you
+        really feel with this handy API.</p>
+    </div>
+
+    <div>
+      <p><strong>Instructions:</strong> in the <b>action</b> field, enter an
+        action this piece of trash should be doing. In the <b>name</b> field,
+        place the name of this "person". In the <b>from</b> field, place the
+        name of person filled with righteous anger. <br /> Not every field will get
+        used every time the content is created, but the <b>from</b> must be filled,
+        and it's useful to fill them all, as the content is randomly generated.
+        Once the fields are filled out to your pleasure, hit the generate button
+        to create the content. Then select the language you would like to translate
+        to and hit translate button.</p>
+      <br />
+      <p>Important info: the server likes to hang, so in the event that the English doesn't generate, hit <code>ctrl+f5</code>.
+        Not all languages have been assigned their proper name, some are still in their ISO 639-1 codes, as the associative array is
+        huge (nearly all of the ones on google translate!) and one dev can only do so much. However, that will limit
+        the choices of languages down to the options that have their proper name.</p>
+
+      <br />
+
+      <form>
+        <span>Action: </span><input type='text' id='something' name='something' value=""></span>
+        <span>Name: </span><input type='text' id='name' name='name' value=""></span>
+        <span>From: </span><input type='text' id='from' name='from' value=""></span>
+        <input type="reset" value="Reset">
+      </form>
+
+      <button onclick="foo.gen();">Generate</button>
+      <select class="hidden" name="selectlang" id="selectlang"><option>Translation</option></select>
+      <button class="hidden" id='transSel' onclick="bar.trans();">Translate</button>
+
+      <table id="transTable">
+        <tr>
+          <th>English</th>
+          <th id='trans'></th>
+        </tr>
+      </table>
+
+      <button class="hidden" id="newfuck" onclick="foo.newState();">New Statement</button>
+
+    </div>
+
+    <footer>
+      <p>This API mashup project implements the <a href="https://www.foaas.com">foaas</a> API combined with the <a href="https://cloud.google.com/translate/docs/getting-started">Google Translate Cloud</a> API (nonfunctional at the moment).</p>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+      <script type="text/javascript" src="mashTrans.js"></script>
+      <script type="text/javascript" src="mash.js"></script>
+    </footer>
+
+  </body>
+</html>
