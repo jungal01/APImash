@@ -35,39 +35,8 @@ for (let index in langDict){
   $('#selectlang').append(new Option(langDict[index], index));
 }
 
-var getTranslation = function translateText (input, target) {
-  // The text to translate, e.g.:
-  // input = 'Hello, world';
-  // The target language, e.g.:
-  // target = 'ru';
-
-  if (!Array.isArray(input)) {
-    input = [input];
-  }
-
-  // Instantiates a client
-  const translate = new Translate();
-
-  // Translates the text into the target language. "input" can be a string for
-  // translating a single piece of text, or an array of strings for translating
-  // multiple texts.
-  return translate.translate(input, target)
-    .then((results) => {
-      let translations = results[0];
-      translations = Array.isArray(translations) ? translations : [translations];
-
-      console.log('Translations:');
-      translations.forEach((translation, i) => {
-        console.log(`${input[i]} => (${target}) ${translation}`);
-      });
-
-      return translations;
-    });
-}
-
 class Translate{
   constructor(){
-    this.eng = document.getElementById('id1');
     this.lang = $('#selectlang option:selected').text();
   }
 
@@ -87,12 +56,24 @@ class Translate{
     self.unhideNew();
     let transcell = document.getElementById('id2');
     let newlang = $('select[name=selectlang]').val();
-    let finalTrans = getTranslation(foo.fuckArray[0],newlang);
-
-    let engQuery = self.eng.innerHTML.split(' ').join('%20');
-    console.log(engQuery);
+    let tempUrl ="https://translation.googleapis.com/language/translate/v2?key=APImash-152781e6ff25&source=en";
+    let targetstr = "&target=";
+    let target = targetstr.concat(newlang);
+    tempUrl = tempUrl.concat(target);
+    let qstr = "&q=";
+    let query = foo.fuckArray;
+    for (var i = 0; i < query.length-1; i++){
+      console.log(i);
+    }
+    console.log('final result', i);
+    let engQuery = query[i];
+    engQuery = engQuery.split(' ').join('%20')
+    let fullquery = qstr.concat(engQuery);
+    let fullUrl = tempUrl.concat(fullquery);
+    console.log(fullUrl);
 
   }
 }
 
 var bar = new Translate();
+
