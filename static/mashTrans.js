@@ -62,18 +62,29 @@ class Translate{
     tempUrl = tempUrl.concat(target);
     let qstr = "&q=";
     let query = foo.fuckArray;
-    for (var i = 0; i < query.length-1; i++){
+      for (var i = 0; i < query.length-1; i++){
       console.log(i);
     }
     console.log('final result', i);
     let engQuery = query[i];
-    engQuery = engQuery.split(' ').join('%20')
+    engQuery = engQuery.split(' ');
+
+    for(let y = 0; y < engQuery.length-1; y++){
+      if(engQuery[y]==='-'){
+        engQuery.splice(y,1);
+      }
+    }
+
+    engQuery = engQuery.join('%20');
     let fullquery = qstr.concat(engQuery);
     let fullUrl = tempUrl.concat(fullquery);
-    console.log(fullUrl);
+
+    $.ajax({
+      url: fullUrl,
+      method: "GET"
+    }).done(function(transdata) {
+      transcell.innerHTML = transdata;
+    });
 
   }
 }
-
-var bar = new Translate();
-
