@@ -54,6 +54,7 @@ class Generate {
   }
 
   newState() {
+    let self = this;
     document.getElementById('selectlang').className = 'hidden';
     document.getElementById('transSel').className = "hidden";
     document.getElementById('trans').innerHTML = "";
@@ -65,6 +66,9 @@ class Generate {
     for (let i = 0; rows.length > 1; i++) {
         rows[1].remove();
     }
+
+    self.fuckArray = [];
+    self.count = 0;
   }
 
   cutString() {
@@ -106,10 +110,6 @@ class Generate {
       alert("For Fuck's sake! - Dev \n \nThe From field must be filled out.\nConsider also filling the Name field, it is used quite often.");
     }
 
-    /*if (document.getElementById('id1').innerHTML != null){
-      alert("To create a new statement, select translate, then new");
-    }*/
-
     $.ajax({
       url: newUrl,
       method: "GET"
@@ -133,3 +133,4 @@ class Generate {
 }
 
 var foo = new Generate();
+
