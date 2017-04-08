@@ -35,39 +35,8 @@ for (let index in langDict){
   $('#selectlang').append(new Option(langDict[index], index));
 }
 
-var getTranslation = function translateText (input, target) {
-  // The text to translate, e.g.:
-  // input = 'Hello, world';
-  // The target language, e.g.:
-  // target = 'ru';
-
-  if (!Array.isArray(input)) {
-    input = [input];
-  }
-
-  // Instantiates a client
-  const translate = new Translate();
-
-  // Translates the text into the target language. "input" can be a string for
-  // translating a single piece of text, or an array of strings for translating
-  // multiple texts.
-  return translate.translate(input, target)
-    .then((results) => {
-      let translations = results[0];
-      translations = Array.isArray(translations) ? translations : [translations];
-
-      console.log('Translations:');
-      translations.forEach((translation, i) => {
-        console.log(`${input[i]} => (${target}) ${translation}`);
-      });
-
-      return translations;
-    });
-}
-
 class Translate{
   constructor(){
-    this.eng = document.getElementById('id1');
     this.lang = $('#selectlang option:selected').text();
   }
 
@@ -85,12 +54,39 @@ class Translate{
     let self = this;
     self.changeTH();
     self.unhideNew();
-    let transcell = document.getElementById('id2');
+    let transcell = document.getElementsByTagName('id2');
     let newlang = $('select[name=selectlang]').val();
-    let finalTrans = getTranslation(foo.fuckArray[0],newlang);
+    let tempUrl ="https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170408T205214Z.6ddca5976114ec18.c98eb53c384977420c3584ad50ae2957238e29d5";
 
-    let engQuery = self.eng.innerHTML.split(' ').join('%20');
-    console.log(engQuery);
+    let textUri = '&text='
+    let text = foo.fuckArray[foo.count-1];
+    console.log(text);
+
+    let engQuery = text.split(' ');
+
+    for(let y = 0; y < engQuery.length-1; y++){
+      if(engQuery[y]==='-'){
+        engQuery.splice(y,1);
+      }
+    }
+
+    engQuery = engQuery.join('%20')
+
+    let query = textUri.concat(engQuery);
+    tempUrl = tempUrl.concat(query);
+
+    let langTrans = '&lang=en-';
+    langTrans = langTrans.concat(newlang);
+    let fullUrl = tempUrl.concat(langTrans);
+
+    console.log(fullUrl);
+
+    $.ajax({
+      url: fullUrl,
+      method: "GET"
+    }).done(function(transdata) {
+      transcell.innerHTML = transdata;
+    });
 
   }
 }

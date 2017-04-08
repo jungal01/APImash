@@ -5,13 +5,13 @@ var fuckDict = {
 13:'/chainsaw/:name/:from', 14:'/cocksplat/:name/:from', 15:'/cool/:from', 16:'/dalton/:name/:from',	17:'/deraadt/:name/:from',18:'/diabetes/:from',
 19:'/donut/:name/:from',20:'/dosomething/do/:something/:from',	21:'/everyone/:from',22:'/everything/:from',	23:'/family/:from',24:'/fascinating/:from',
 25:'/field/:name/:from/Adverbs 13:6-7',	26:'/flying/:from',	27:'/gfy/:name/:from',	28:'/give/:from',	29:'/greed/fucking/:from',30:'/horse/:from',
-31:'/ing/:name/:from',	32:'/keep/:name/:from',33:'/keepcalm/code/:from',	34:'/king/:name/:from',	35:'/life/:from',	36:'/linus/:name/:from',
+31:'/ing/:name/:from',	32:'/keep/:name/:from',33:'/keepcalm/:something/:from',	34:'/king/:name/:from',	35:'/life/:from',	36:'/linus/:name/:from',
 37:'/look/:name/:from',38:'/looking/:from',39:'/madison/:name/:from',40:'/maybe/:from',	41:'/me/:from',	42:'/mornin/:from',	43:'/no/:from',
 44:'/nugget/:name/:from',	45:'/off/:name/:from',46:'/off-with/that shit/:from',	47:'/outside/:name/:from',	48:'/particular/thing/:from',	49:'/pink/:from',
 50:'/problem/:name/:from',51:'/pulp/English/:from',	52:'/retard/:from',	53:'/ridiculous/:from',	54:'/rtfm/:from',	55:'/sake/:from',
 56:'/shakespeare/:name/:from',	57:'/shit/:from',	58:'/shutup/:name/:from',	59:'/single/:from',	60:'/thanks/:from',	61:'/that/:from',
-62:'/think/:name/:from',	63:'/thinking/:name/:from',	64:'/this/:from',	65:'/thumbs/:name/:from',	66:'/too/:from',	67:'/tucker/:from',	68:'/what/:from',
-69:'/xmas/:name/:from',	70:'/yoda/:name/:from',71:'/you/:name/:from',72:'/zayn/:from',	73:'/zero/:from'
+62:'/think/:name/:from',	63:'/thinking/:name/:from',	64:'/this/:from',	65:'/thumbs/:name/:from',	66:'/too/:from',
+67:'/tucker/:from',	68:'/what/:from', 69:'/xmas/:name/:from',	70:'/yoda/:name/:from',71:'/you/:name/:from',72:'/zayn/:from',	73:'/zero/:from'
 }
 
 var iterate = function(id){
@@ -54,6 +54,7 @@ class Generate {
   }
 
   newState() {
+    let self = this;
     document.getElementById('selectlang').className = 'hidden';
     document.getElementById('transSel').className = "hidden";
     document.getElementById('trans').innerHTML = "";
@@ -65,6 +66,9 @@ class Generate {
     for (let i = 0; rows.length > 1; i++) {
         rows[1].remove();
     }
+
+    self.fuckArray = [];
+    self.count = 0;
   }
 
   cutString() {
@@ -105,10 +109,6 @@ class Generate {
       document.getElementById('transSel').className = "hidden";
       alert("For Fuck's sake! - Dev \n \nThe From field must be filled out.\nConsider also filling the Name field, it is used quite often.");
     }
-
-    /*if (document.getElementById('id1').innerHTML != null){
-      alert("To create a new statement, select translate, then new");
-    }*/
 
     $.ajax({
       url: newUrl,
