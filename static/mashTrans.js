@@ -66,7 +66,7 @@ class Translate{
 
     for(let y = 0; y < engQuery.length-1; y++){
       if(engQuery[y]==='-'){
-        engQuery.splice(y,1);
+        engQuery[y] = '%2D';
       }
     }
 
