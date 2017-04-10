@@ -31,7 +31,7 @@ class CreateTable{
     let row = document.createElement('tr');
     for (let i = 0; i < 2; i++) {
       let el = document.createElement('td');
-      el.setAttribute('name', iterate(i));
+      el.setAttribute('id', iterate(i));
       if (i === 0) {
         el.innerHTML = self.text;
       }

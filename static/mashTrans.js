@@ -54,7 +54,7 @@ class Translate{
     let self = this;
     self.changeTH();
     self.unhideNew();
-    let transcell = document.getElementsByTagName('id2');
+    let transcell = document.getElementById('id2');
     let newlang = $('select[name=selectlang]').val();
     let tempUrl ="https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170408T205214Z.6ddca5976114ec18.c98eb53c384977420c3584ad50ae2957238e29d5";
 
@@ -85,7 +85,7 @@ class Translate{
       url: fullUrl,
       method: "GET"
     }).done(function(transdata) {
-      transcell.innerHTML = transdata;
+      transcell.innerHTML = transdata["text"];
     });
 
   }
