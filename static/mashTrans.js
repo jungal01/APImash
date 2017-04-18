@@ -83,7 +83,7 @@ class Translate{
       url: fullUrl,
       method: "GET"
     }).done(function(transdata) {
-      transcell.innerHTML = transdata;
+      transcell.innerHTML = transdata["text"];
     });
 
   }
