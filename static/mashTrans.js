@@ -56,7 +56,6 @@ class Translate{
     self.unhideNew();
     let transcell = document.getElementById('id2');
     let newlang = $('select[name=selectlang]').val();
-<<<<<<< HEAD
     let tempUrl ="https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170408T205214Z.6ddca5976114ec18.c98eb53c384977420c3584ad50ae2957238e29d5";
 
     let textUri = '&text='
@@ -81,7 +80,6 @@ class Translate{
     let fullUrl = tempUrl.concat(langTrans);
 
     console.log(fullUrl);
-=======
     let tempUrl ="https://translation.googleapis.com/language/translate/v2?key=APImash-152781e6ff25&source=en";
     let targetstr = "&target=";
     let target = targetstr.concat(newlang);
