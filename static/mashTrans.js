@@ -104,7 +104,6 @@ class Translate{
     engQuery = engQuery.join('%20');
     let fullquery = qstr.concat(engQuery);
     let fullUrl = tempUrl.concat(fullquery);
->>>>>>> af2585c51ee09cac5eebe7b98e62180765626160
 
     $.ajax({
       url: fullUrl,
