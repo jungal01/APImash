@@ -80,29 +80,7 @@ class Translate{
     let fullUrl = tempUrl.concat(langTrans);
 
     console.log(fullUrl);
-    let tempUrl ="https://translation.googleapis.com/language/translate/v2?key=APImash-152781e6ff25&source=en";
-    let targetstr = "&target=";
-    let target = targetstr.concat(newlang);
-    tempUrl = tempUrl.concat(target);
-    let qstr = "&q=";
-    let query = foo.fuckArray;
-      for (var i = 0; i < query.length-1; i++){
-      console.log(i);
-    }
-    console.log('final result', i);
-    let engQuery = query[i];
-    engQuery = engQuery.split(' ');
-
-    for(let y = 0; y < engQuery.length-1; y++){
-      if(engQuery[y]==='-'){
-        engQuery.splice(y,1);
-      }
-    }
-
-    engQuery = engQuery.join('%20');
-    let fullquery = qstr.concat(engQuery);
-    let fullUrl = tempUrl.concat(fullquery);
-
+   
     $.ajax({
       url: fullUrl,
       method: "GET"
